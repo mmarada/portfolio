@@ -110,8 +110,8 @@ const EXPERIENCE_CARDS = [
     role: "Founding Engineer",
     location: "USA (Remote)",
     note: "Music × AI startup",
-    logo: null,
-    logoBg: "bg-gradient-to-br from-violet-500 to-purple-600",
+    logo: "/logos/ansemble.svg",
+    logoBg: "bg-[#0d0d1a]",
     logoText: "A",
     accentClass: "text-violet-600",
   },
@@ -123,8 +123,8 @@ const EXPERIENCE_CARDS = [
     role: "Software Architect",
     location: "Hyderabad, India",
     note: "Core Framework team",
-    logo: "https://logo.clearbit.com/oracle.com",
-    logoBg: "bg-white border border-stone-200",
+    logo: "/logos/oracle.svg",
+    logoBg: "bg-white",
     logoText: "O",
     accentClass: "text-red-600",
   },
@@ -136,8 +136,8 @@ const EXPERIENCE_CARDS = [
     role: "App Developer → Assoc. SE",
     location: "Hyderabad, India",
     note: "Security & platform team",
-    logo: "https://logo.clearbit.com/oracle.com",
-    logoBg: "bg-white border border-stone-200",
+    logo: "/logos/oracle.svg",
+    logoBg: "bg-white",
     logoText: "O",
     accentClass: "text-red-600",
   },
@@ -150,8 +150,8 @@ const EDUCATION_CARDS = [
     school: "University of Washington",
     degree: "MBA · Management Science (STEM)",
     note: "Dean's Merit Scholar · Foster Tech Club · Strategy Club",
-    logo: "https://logo.clearbit.com/washington.edu",
-    logoBg: "bg-white border border-stone-200",
+    logo: "/logos/uw.svg",
+    logoBg: "bg-white",
     logoText: "W",
     accentClass: "text-purple-600",
   },
@@ -161,8 +161,8 @@ const EDUCATION_CARDS = [
     school: "Osmania University",
     degree: "B.E. · Computer Science and Engineering",
     note: "IIT-JEE 10k ranker · State 9th rank in Math Olympiads",
-    logo: null,
-    logoBg: "bg-gradient-to-br from-amber-500 to-orange-600",
+    logo: "/logos/osmania.svg",
+    logoBg: "bg-white",
     logoText: "OU",
     accentClass: "text-amber-600",
   },
@@ -171,11 +171,21 @@ const EDUCATION_CARDS = [
 function CompanyLogo({ logo, logoBg, logoText, size = 44 }: {
   logo: string | null; logoBg: string; logoText: string; size?: number;
 }) {
+  // Oracle SVG is a wide wordmark — needs wider container
+  const isWordmark = logo?.includes("oracle");
+  const width  = isWordmark ? size * 2.4 : size;
+  const height = size;
+
   if (logo) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={logo} alt={logoText} width={size} height={size}
-        className={`rounded-xl object-contain p-1.5 ${logoBg}`}
+      <img
+        src={logo}
+        alt={logoText}
+        width={width}
+        height={height}
+        className={`rounded-xl object-contain p-2 ${logoBg}`}
+        style={{ width, height }}
         onError={(e) => {
           const el = e.currentTarget;
           el.style.display = "none";

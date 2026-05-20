@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3b1f6e"/>
+      <stop offset="100%" stop-color="#0d0d1a"/>
+    </radialGradient>
+    <linearGradient id="noteGrad" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#ff5f8d"/>
+      <stop offset="35%" stop-color="#c84fff"/>
+      <stop offset="70%" stop-color="#5b6fff"/>
+      <stop offset="100%" stop-color="#38c6ff"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark background circle -->
+  <circle cx="100" cy="100" r="100" fill="url(#bg)"/>
+
+  <!-- Glow halo -->
+  <ellipse cx="100" cy="110" rx="52" ry="42" fill="#7b3fff" opacity="0.18" filter="url(#glow)"/>
+
+  <!-- Music note shape — double eighth note -->
+  <!-- Left note head -->
+  <ellipse cx="72" cy="130" rx="14" ry="10" transform="rotate(-15 72 130)" fill="url(#noteGrad)" filter="url(#glow)"/>
+  <!-- Right note head -->
+  <ellipse cx="118" cy="140" rx="14" ry="10" transform="rotate(-15 118 140)" fill="url(#noteGrad)" filter="url(#glow)"/>
+
+  <!-- Left stem -->
+  <rect x="83" y="68" width="6" height="66" rx="3" fill="url(#noteGrad)"/>
+  <!-- Right stem -->
+  <rect x="129" y="78" width="6" height="66" rx="3" fill="url(#noteGrad)"/>
+
+  <!-- Beam connecting the two stems -->
+  <path d="M83,68 Q106,60 135,78 L135,90 Q106,72 83,82 Z" fill="url(#noteGrad)"/>
+  <!-- Second beam -->
+  <path d="M83,82 Q106,74 135,90 L135,102 Q106,86 83,96 Z" fill="url(#noteGrad)" opacity="0.7"/>
+</svg>
