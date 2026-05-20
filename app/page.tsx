@@ -55,14 +55,14 @@ function Hero() {
           <br />Marada
         </h1>
 
-        <p className="text-lg sm:text-xl text-stone-500 max-w-2xl mx-auto mb-4 leading-relaxed">
-          MBA Candidate @ <span className="text-stone-800 font-medium">UW Foster</span> ·{" "}
-          ex-Software Architect @ <span className="text-stone-800 font-medium">Oracle</span> ·{" "}
-          Founding Engineer @ <span className="text-stone-800 font-medium">Ansemble AI</span>
-        </p>
-        <p className="text-base text-stone-400 max-w-xl mx-auto mb-12 leading-relaxed">
-          7 years shipping enterprise systems at Oracle, then went early-stage to help raise $500k+.
-          Now combining an MBA with hands-on AI engineering to build products that actually ship.
+        <p className="text-lg sm:text-xl text-stone-500 max-w-2xl mx-auto mb-12 leading-relaxed">
+          Hi, I&apos;m Mohan Marada — CS + MBA grad. Previously{" "}
+          <span className="text-stone-800 font-medium">@Oracle</span> and{" "}
+          <span className="text-stone-800 font-medium">@Ansemble AI</span> in the music space.
+          My skills span <span className="text-[#CF6B40] font-medium">technical architecture</span>,{" "}
+          <span className="text-[#CF6B40] font-medium">product management</span>, and{" "}
+          <span className="text-[#CF6B40] font-medium">full-stack development</span>.
+          Looking for my next opportunity.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
