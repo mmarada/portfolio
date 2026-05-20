@@ -45,47 +45,34 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative h-screen overflow-hidden flex items-end" style={{
-      background: "linear-gradient(150deg, #0e1a09 0%, #1b2f10 20%, #243318 45%, #1e2b14 65%, #111a0c 85%, #080e05 100%)"
-    }}>
-      {/* Organic light pools */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-16 right-1/4 w-[500px] h-[500px] rounded-full opacity-25"
-          style={{ background: "radial-gradient(circle, #4a6b2a 0%, transparent 65%)" }} />
-        <div className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-15"
-          style={{ background: "radial-gradient(circle, #3d5522 0%, transparent 70%)" }} />
-        <div className="absolute bottom-1/2 left-1/3 w-48 h-48 rounded-full opacity-10"
-          style={{ background: "radial-gradient(circle, #5a7a30 0%, transparent 70%)" }} />
-        {/* Warm bottom glow */}
-        <div className="absolute bottom-0 left-0 w-96 h-64 opacity-20"
-          style={{ background: "radial-gradient(ellipse at bottom left, #CF6B40 0%, transparent 70%)" }} />
-      </div>
+    <section className="relative h-screen overflow-hidden flex items-end">
+      {/* Background photo — UW / PNW nature */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1920&q=80"
+        alt=""
+        aria-hidden
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ filter: "brightness(0.45) saturate(0.85)" }}
+      />
 
-      {/* Film grain texture */}
-      <div className="absolute inset-0 opacity-[0.06] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          backgroundSize: "180px 180px"
-        }} />
+      {/* Bottom-to-top dark vignette so text pops */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.0) 100%)" }} />
 
       {/* Bottom-left content */}
       <div className="relative z-10 px-10 sm:px-16 pb-16 sm:pb-20 max-w-2xl">
-        <div className="inline-flex items-center gap-2 mb-5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-white/50 text-xs font-mono tracking-widest uppercase">Open to roles · Seattle, WA</span>
-        </div>
-
         <h1 className="text-6xl sm:text-8xl font-bold text-white leading-none mb-4 tracking-tight">
           Mohan<br />Marada
         </h1>
 
-        <p className="text-white/60 text-xl sm:text-2xl mb-10 font-light leading-snug">
+        <p className="text-white/65 text-xl sm:text-2xl mb-10 font-light leading-snug">
           Software Architect + Product Builder
         </p>
 
         <a href="mailto:mokarma@uw.edu"
-          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all hover:bg-[#6b5420]"
-          style={{ background: "#4a3510", color: "rgba(255,255,255,0.85)", border: "1px solid rgba(255,255,255,0.18)" }}>
+          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all hover:bg-white/20"
+          style={{ background: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.9)", border: "1px solid rgba(255,255,255,0.25)", backdropFilter: "blur(8px)" }}>
           Get In Touch
         </a>
       </div>
@@ -315,7 +302,7 @@ function Experience() {
 
 function LivePreview({ url }: { url: string }) {
   return (
-    <div className="relative w-full overflow-hidden bg-stone-50" style={{ height: 210 }}>
+    <div className="relative w-full overflow-hidden bg-stone-50" style={{ height: 240 }}>
       <iframe src={url} title="Live preview" scrolling="no"
         style={{ width: 1280, height: 840, transform: "scale(0.25)", transformOrigin: "top left",
           pointerEvents: "none", border: "none", display: "block" }}
@@ -327,7 +314,7 @@ function LivePreview({ url }: { url: string }) {
 
 function GradientPreview({ gradient, title }: { gradient: string; title: string }) {
   return (
-    <div className={`w-full bg-gradient-to-br ${gradient} flex items-center justify-center`} style={{ height: 210 }}>
+    <div className={`w-full bg-gradient-to-br ${gradient} flex items-center justify-center`} style={{ height: 240 }}>
       <span className="text-stone-500 text-3xl font-bold tracking-tighter select-none opacity-40">{title}</span>
     </div>
   );
@@ -396,8 +383,8 @@ function Projects() {
   ] as const;
 
   return (
-    <section id="projects" className="px-6 py-24 border-t border-[#E7E2D9]">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="px-4 py-24 border-t border-[#E7E2D9]">
+      <div className="max-w-[1400px] mx-auto">
         <SectionLabel>Work</SectionLabel>
         <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
           <h2 className="text-4xl font-bold tracking-tight text-stone-900">Projects</h2>
@@ -415,7 +402,7 @@ function Projects() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
           {filtered.map((project) => (
             <div key={project.id} className={project.span === "wide" ? "sm:col-span-2" : ""}>
               <ProjectCard project={project} />
@@ -485,6 +472,10 @@ function Contact() {
           <a href="https://github.com/mmarada" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm">
             <GithubIcon size={15} /> GitHub
+          </a>
+          <a href="/resume/resume.pdf" target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm">
+            Resume <ExternalLinkIcon />
           </a>
         </div>
       </div>
