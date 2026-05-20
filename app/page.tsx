@@ -3,35 +3,28 @@
 import { useState } from "react";
 import { projects, type Project } from "./data/projects";
 
-// ─── Nav ─────────────────────────────────────────────────────────────────────
+// ─── Nav ──────────────────────────────────────────────────────────────────────
 
 function Nav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <nav className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
-        <span className="font-mono text-sm text-zinc-500 tracking-widest">mvm</span>
-        <div className="flex items-center gap-1 bg-zinc-900/80 border border-zinc-800 backdrop-blur-md rounded-full px-3 py-2">
+        <span className="font-mono text-sm text-stone-400 tracking-widest">mvm</span>
+        <div className="flex items-center gap-1 bg-white/90 border border-[#E7E2D9] backdrop-blur-md rounded-full px-3 py-2 shadow-sm">
           {[
             { label: "About",      href: "#about"      },
             { label: "Experience", href: "#experience" },
             { label: "Projects",   href: "#projects"   },
             { label: "Contact",    href: "#contact"    },
           ].map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="px-3 py-1 text-sm text-zinc-400 hover:text-zinc-100 rounded-full hover:bg-zinc-800 transition-all"
-            >
+            <a key={l.href} href={l.href}
+              className="px-3 py-1 text-sm text-stone-500 hover:text-stone-900 rounded-full hover:bg-stone-100 transition-all">
               {l.label}
             </a>
           ))}
         </div>
-        <a
-          href="https://github.com/mmarada"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-zinc-500 hover:text-zinc-200 transition-colors"
-        >
+        <a href="https://github.com/mmarada" target="_blank" rel="noopener noreferrer"
+          className="text-stone-400 hover:text-stone-700 transition-colors">
           <GithubIcon size={16} />
         </a>
       </nav>
@@ -44,57 +37,60 @@ function Nav() {
 function Hero() {
   return (
     <section id="about" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
+      {/* Subtle warm glow */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="w-[700px] h-[700px] rounded-full bg-violet-600/10 blur-[120px]" />
+        <div className="w-[600px] h-[400px] rounded-full bg-[#CF6B40]/8 blur-[100px]" />
       </div>
 
       <div className="relative z-10 max-w-4xl w-full text-center">
-        <div className="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-full px-4 py-1.5 mb-8">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-xs text-zinc-400 font-mono">Open to PM & Engineering roles · Seattle, WA</span>
+        {/* Status pill */}
+        <div className="inline-flex items-center gap-2 bg-white border border-[#E7E2D9] rounded-full px-4 py-1.5 mb-8 shadow-sm">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-xs text-stone-500 font-mono">Open to PM & Engineering roles · Seattle, WA</span>
         </div>
 
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-none">
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-none text-stone-900">
           Mohan{" "}
-          <span className="bg-gradient-to-r from-violet-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">
-            Vamshi
-          </span>
+          <span className="text-[#CF6B40]">Vamshi</span>
           <br />Marada
         </h1>
 
-        <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-4 leading-relaxed">
-          MBA Candidate @ <span className="text-zinc-200 font-medium">UW Foster</span> ·{" "}
-          ex-Software Architect @ <span className="text-zinc-200 font-medium">Oracle</span> ·{" "}
-          Founding Engineer @ <span className="text-zinc-200 font-medium">Ansemble AI</span>
+        <p className="text-lg sm:text-xl text-stone-500 max-w-2xl mx-auto mb-4 leading-relaxed">
+          MBA Candidate @ <span className="text-stone-800 font-medium">UW Foster</span> ·{" "}
+          ex-Software Architect @ <span className="text-stone-800 font-medium">Oracle</span> ·{" "}
+          Founding Engineer @ <span className="text-stone-800 font-medium">Ansemble AI</span>
         </p>
-        <p className="text-base text-zinc-500 max-w-xl mx-auto mb-12 leading-relaxed">
+        <p className="text-base text-stone-400 max-w-xl mx-auto mb-12 leading-relaxed">
           7 years shipping enterprise systems at Oracle, then went early-stage to help raise $500k+.
           Now combining an MBA with hands-on AI engineering to build products that actually ship.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
-          <a href="#projects" className="px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-full transition-colors">
+          <a href="#projects"
+            className="px-6 py-3 bg-[#CF6B40] hover:bg-[#B85C34] text-white text-sm font-semibold rounded-full transition-colors shadow-sm">
             View projects
           </a>
-          <a href="mailto:mokarma@uw.edu" className="px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 text-sm font-medium rounded-full transition-colors">
+          <a href="mailto:mokarma@uw.edu"
+            className="px-6 py-3 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm">
             Get in touch
           </a>
           <a href="https://www.linkedin.com/in/mohan-marada/" target="_blank" rel="noopener noreferrer"
-            className="px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 text-sm font-medium rounded-full transition-colors flex items-center gap-2">
+            className="px-6 py-3 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm flex items-center gap-2">
             <LinkedInIcon size={14} /> LinkedIn
           </a>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-zinc-800 border border-zinc-800 rounded-2xl overflow-hidden max-w-2xl mx-auto">
+        {/* Stats row */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[#E7E2D9] border border-[#E7E2D9] rounded-2xl overflow-hidden max-w-2xl mx-auto shadow-sm">
           {[
             { value: "7 yrs",  label: "at Oracle"           },
             { value: "$500k+", label: "seed raised"          },
             { value: "MBA",    label: "Dean's Merit Scholar" },
             { value: "30%",    label: "cost reduction led"   },
           ].map((s) => (
-            <div key={s.label} className="bg-zinc-900/60 px-6 py-5 text-center">
-              <p className="text-2xl font-bold text-zinc-100 tracking-tight">{s.value}</p>
-              <p className="text-xs text-zinc-500 mt-1">{s.label}</p>
+            <div key={s.label} className="bg-white px-6 py-5 text-center">
+              <p className="text-2xl font-bold text-stone-900 tracking-tight">{s.value}</p>
+              <p className="text-xs text-stone-400 mt-1">{s.label}</p>
             </div>
           ))}
         </div>
@@ -103,7 +99,7 @@ function Hero() {
   );
 }
 
-// ─── Experience & Education (manky.me style) ─────────────────────────────────
+// ─── Experience & Education ───────────────────────────────────────────────────
 
 const EXPERIENCE_CARDS = [
   {
@@ -115,9 +111,9 @@ const EXPERIENCE_CARDS = [
     location: "USA (Remote)",
     note: "Music × AI startup",
     logo: null,
-    logoBg: "bg-gradient-to-br from-violet-600 to-purple-700",
+    logoBg: "bg-gradient-to-br from-violet-500 to-purple-600",
     logoText: "A",
-    accentClass: "text-violet-400",
+    accentClass: "text-violet-600",
   },
   {
     id: "oracle-arch",
@@ -128,12 +124,12 @@ const EXPERIENCE_CARDS = [
     location: "Hyderabad, India",
     note: "Core Framework team",
     logo: "https://logo.clearbit.com/oracle.com",
-    logoBg: "bg-white",
+    logoBg: "bg-white border border-stone-200",
     logoText: "O",
-    accentClass: "text-red-400",
+    accentClass: "text-red-600",
   },
   {
-    id: "oracle-ase",
+    id: "oracle-dev",
     period: "2018 – 2021",
     company: "Oracle",
     companyUrl: "https://oracle.com",
@@ -141,9 +137,9 @@ const EXPERIENCE_CARDS = [
     location: "Hyderabad, India",
     note: "Security & platform team",
     logo: "https://logo.clearbit.com/oracle.com",
-    logoBg: "bg-white",
+    logoBg: "bg-white border border-stone-200",
     logoText: "O",
-    accentClass: "text-red-400",
+    accentClass: "text-red-600",
   },
 ];
 
@@ -155,9 +151,9 @@ const EDUCATION_CARDS = [
     degree: "MBA · Management Science (STEM)",
     note: "Dean's Merit Scholar · Foster Tech Club · Strategy Club",
     logo: "https://logo.clearbit.com/washington.edu",
-    logoBg: "bg-white",
+    logoBg: "bg-white border border-stone-200",
     logoText: "W",
-    accentClass: "text-purple-400",
+    accentClass: "text-purple-600",
   },
   {
     id: "osmania",
@@ -166,40 +162,32 @@ const EDUCATION_CARDS = [
     degree: "B.E. · Computer Science and Engineering",
     note: "IIT-JEE 10k ranker · State 9th rank in Math Olympiads",
     logo: null,
-    logoBg: "bg-gradient-to-br from-amber-600 to-orange-700",
+    logoBg: "bg-gradient-to-br from-amber-500 to-orange-600",
     logoText: "OU",
-    accentClass: "text-amber-400",
+    accentClass: "text-amber-600",
   },
 ];
 
-function CompanyLogo({
-  logo, logoBg, logoText, size = 48,
-}: {
+function CompanyLogo({ logo, logoBg, logoText, size = 44 }: {
   logo: string | null; logoBg: string; logoText: string; size?: number;
 }) {
   if (logo) {
     return (
-      /* eslint-disable-next-line @next/next/no-img-element */
-      <img
-        src={logo}
-        alt={logoText}
-        width={size}
-        height={size}
-        className="rounded-xl object-contain bg-white p-1"
+      // eslint-disable-next-line @next/next/no-img-element
+      <img src={logo} alt={logoText} width={size} height={size}
+        className={`rounded-xl object-contain p-1.5 ${logoBg}`}
         onError={(e) => {
-          const t = e.currentTarget;
-          t.style.display = "none";
-          const sib = t.nextElementSibling as HTMLElement | null;
-          if (sib) sib.style.display = "flex";
+          const el = e.currentTarget;
+          el.style.display = "none";
+          const fb = el.nextElementSibling as HTMLElement | null;
+          if (fb) fb.style.display = "flex";
         }}
       />
     );
   }
   return (
-    <div
-      className={`${logoBg} rounded-xl flex items-center justify-center text-white font-bold text-sm`}
-      style={{ width: size, height: size }}
-    >
+    <div className={`${logoBg} rounded-xl flex items-center justify-center text-white font-bold text-sm`}
+      style={{ width: size, height: size }}>
       {logoText}
     </div>
   );
@@ -207,84 +195,63 @@ function CompanyLogo({
 
 function Experience() {
   return (
-    <section id="experience" className="px-6 py-24 border-t border-zinc-900">
+    <section id="experience" className="px-6 py-24 border-t border-[#E7E2D9]">
       <div className="max-w-5xl mx-auto">
-        {/* Section heading — manky.me serif style adapted */}
-        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center mb-14">
+        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center mb-14 text-stone-900">
           Experience{" "}
-          <span className="text-zinc-600">&amp;</span>{" "}
-          <span className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
-            Education
-          </span>
+          <span className="text-stone-300">&amp;</span>{" "}
+          <span className="text-[#CF6B40]">Education</span>
         </h2>
 
-        {/* Experience cards — horizontal row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        {/* Experience cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
           {EXPERIENCE_CARDS.map((exp) => (
-            <div
-              key={exp.id}
-              className="p-5 bg-zinc-900/60 border border-zinc-800 rounded-2xl hover:border-zinc-600 transition-colors flex flex-col gap-3"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="relative">
-                  <CompanyLogo logo={exp.logo} logoBg={exp.logoBg} logoText={exp.logoText} size={44} />
-                  {/* fallback div hidden by default */}
-                  <div
-                    className={`${exp.logoBg} rounded-xl items-center justify-center text-white font-bold text-sm hidden`}
-                    style={{ width: 44, height: 44 }}
-                  >
-                    {exp.logoText}
-                  </div>
+            <div key={exp.id}
+              className="p-5 bg-white border border-[#E7E2D9] rounded-2xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-3">
+              <div className="flex items-start justify-between gap-2">
+                <CompanyLogo logo={exp.logo} logoBg={exp.logoBg} logoText={exp.logoText} />
+                <div
+                  className="rounded-xl items-center justify-center text-white font-bold text-sm hidden"
+                  style={{ width: 44, height: 44 }}
+                >
+                  {exp.logoText}
                 </div>
-                <span className="text-[11px] font-mono text-zinc-600 mt-1">{exp.period}</span>
+                <span className="text-[11px] font-mono text-stone-400 mt-1 text-right leading-tight">{exp.period}</span>
               </div>
               <div>
-                <p className="text-xs text-zinc-600 mb-0.5">{exp.period}</p>
                 {exp.companyUrl ? (
-                  <a
-                    href={exp.companyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base font-semibold text-zinc-100 hover:text-zinc-300 transition-colors flex items-center gap-1"
-                  >
+                  <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer"
+                    className="text-base font-semibold text-stone-900 hover:text-[#CF6B40] transition-colors flex items-center gap-1">
                     {exp.company} <ExternalLinkIcon />
                   </a>
                 ) : (
-                  <p className="text-base font-semibold text-zinc-100">{exp.company}</p>
+                  <p className="text-base font-semibold text-stone-900">{exp.company}</p>
                 )}
                 <p className={`text-sm font-medium mt-0.5 ${exp.accentClass}`}>{exp.role}</p>
-                <p className="text-xs text-zinc-500 mt-1">{exp.location}</p>
-                {exp.note && (
-                  <p className="text-xs text-zinc-600 mt-1 italic">{exp.note}</p>
-                )}
+                <p className="text-xs text-stone-400 mt-1">{exp.location}</p>
+                {exp.note && <p className="text-xs text-stone-300 mt-1 italic">{exp.note}</p>}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Education cards — centered below */}
+        {/* Education cards */}
         <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
           {EDUCATION_CARDS.map((edu) => (
-            <div
-              key={edu.id}
-              className="flex-1 p-5 bg-zinc-900/60 border border-zinc-800 rounded-2xl hover:border-zinc-600 transition-colors flex flex-col gap-3"
-            >
-              <div className="flex items-start justify-between gap-2">
-                <div className="relative">
-                  <CompanyLogo logo={edu.logo} logoBg={edu.logoBg} logoText={edu.logoText} size={44} />
-                  <div
-                    className={`${edu.logoBg} rounded-xl items-center justify-center text-white font-bold text-sm hidden`}
-                    style={{ width: 44, height: 44 }}
-                  >
-                    {edu.logoText}
-                  </div>
-                </div>
+            <div key={edu.id}
+              className="flex-1 p-5 bg-white border border-[#E7E2D9] rounded-2xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-3">
+              <CompanyLogo logo={edu.logo} logoBg={edu.logoBg} logoText={edu.logoText} />
+              <div
+                className="rounded-xl items-center justify-center text-white font-bold text-sm hidden"
+                style={{ width: 44, height: 44 }}
+              >
+                {edu.logoText}
               </div>
               <div>
-                <p className="text-[11px] font-mono text-zinc-600 mb-0.5">{edu.period}</p>
-                <p className="text-base font-semibold text-zinc-100">{edu.school}</p>
+                <p className="text-[11px] font-mono text-stone-400 mb-0.5">{edu.period}</p>
+                <p className="text-base font-semibold text-stone-900">{edu.school}</p>
                 <p className={`text-sm font-medium mt-0.5 ${edu.accentClass}`}>{edu.degree}</p>
-                <p className="text-xs text-zinc-500 mt-1">{edu.note}</p>
+                <p className="text-xs text-stone-400 mt-1">{edu.note}</p>
               </div>
             </div>
           ))}
@@ -294,75 +261,56 @@ function Experience() {
   );
 }
 
-// ─── Project card with live iframe preview ────────────────────────────────────
+// ─── Project card ─────────────────────────────────────────────────────────────
 
 function LivePreview({ url }: { url: string }) {
   return (
-    // Outer container defines the visible size of the preview
-    <div className="relative w-full overflow-hidden rounded-t-none rounded-b-none bg-zinc-950" style={{ height: 210 }}>
-      {/* Scale a full-width viewport down to fit the card */}
-      <iframe
-        src={url}
-        title="Live preview"
-        scrolling="no"
-        style={{
-          width: 1280,
-          height: 840,
-          transform: "scale(0.25)",
-          transformOrigin: "top left",
-          pointerEvents: "none",
-          border: "none",
-          display: "block",
-        }}
+    <div className="relative w-full overflow-hidden bg-stone-50" style={{ height: 210 }}>
+      <iframe src={url} title="Live preview" scrolling="no"
+        style={{ width: 1280, height: 840, transform: "scale(0.25)", transformOrigin: "top left",
+          pointerEvents: "none", border: "none", display: "block" }}
       />
-      {/* Invisible click shield so the whole card stays clickable */}
       <div className="absolute inset-0" />
     </div>
   );
 }
 
-function GradientPreview({ gradient }: { gradient: string }) {
+function GradientPreview({ gradient, title }: { gradient: string; title: string }) {
   return (
     <div className={`w-full bg-gradient-to-br ${gradient} flex items-center justify-center`} style={{ height: 210 }}>
-      <div className="pointer-events-none absolute inset-0 opacity-[0.04] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXMiPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIxIi8+PC9zdmc+')]" />
-      <span className="text-white/20 text-4xl font-bold tracking-tighter">{"{  }"}</span>
+      <span className="text-stone-300 text-3xl font-bold tracking-tighter select-none">{title}</span>
     </div>
   );
 }
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden hover:-translate-y-1 hover:border-zinc-600 hover:shadow-2xl hover:shadow-black/50 transition-all duration-200">
+    <div className="group flex flex-col rounded-2xl border border-[#E7E2D9] bg-white overflow-hidden
+      hover:-translate-y-1 hover:shadow-xl hover:border-[#D6CFCA] transition-all duration-200"
+      style={{ borderTop: `3px solid ${project.borderColor}` }}>
 
-      {/* Header row */}
-      <div className="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
+      {/* Header */}
+      <div className="flex items-start justify-between gap-3 px-5 pt-4 pb-3">
         <div className="min-w-0">
-          <h3 className="font-semibold text-zinc-100 text-base leading-tight truncate">{project.title}</h3>
-          <div className="flex flex-wrap gap-1.5 mt-1.5">
+          <h3 className="font-semibold text-stone-900 text-base leading-tight truncate">{project.title}</h3>
+          <div className="flex flex-wrap gap-2 mt-1">
             {project.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="text-[11px] text-zinc-500 font-mono">{tag}</span>
+              <span key={tag} className="text-[11px] text-stone-400 font-mono">{tag}</span>
             ))}
           </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">
           {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
+            <a href={project.demo} target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full border transition-colors"
-              style={{ color: project.accentColor, borderColor: `${project.accentColor}50` }}
-            >
+              style={{ color: project.accentColor, borderColor: `${project.accentColor}40`,
+                background: `${project.accentColor}08` }}>
               Live Demo <ExternalLinkIcon />
             </a>
           )}
           {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-600 hover:text-zinc-300 transition-colors"
-            >
+            <a href={project.github} target="_blank" rel="noopener noreferrer"
+              className="text-stone-300 hover:text-stone-600 transition-colors">
               <GithubIcon size={14} />
             </a>
           )}
@@ -370,19 +318,17 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Preview */}
-      <div className="relative overflow-hidden border-t border-zinc-800">
-        {project.demo ? (
-          <LivePreview url={project.demo} />
-        ) : (
-          <GradientPreview gradient={project.gradient} />
-        )}
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-zinc-900 to-transparent pointer-events-none" />
+      <div className="relative overflow-hidden border-t border-[#F0EBE3]">
+        {project.demo
+          ? <LivePreview url={project.demo} />
+          : <GradientPreview gradient={project.gradient} title={project.title} />
+        }
+        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent pointer-events-none" />
       </div>
 
       {/* Description */}
-      <div className="px-5 py-4 border-t border-zinc-800">
-        <p className="text-xs text-zinc-500 leading-relaxed line-clamp-2">{project.description}</p>
+      <div className="px-5 py-4 border-t border-[#F0EBE3]">
+        <p className="text-xs text-stone-400 leading-relaxed line-clamp-2">{project.description}</p>
       </div>
     </div>
   );
@@ -390,9 +336,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 function Projects() {
   const [filter, setFilter] = useState<"all" | "ai" | "fullstack" | "data" | "tools">("all");
-
   const filtered = filter === "all" ? projects : projects.filter((p) => p.category === filter);
-
   const FILTERS = [
     { id: "all",       label: "All"         },
     { id: "ai",        label: "AI / Agents" },
@@ -402,22 +346,19 @@ function Projects() {
   ] as const;
 
   return (
-    <section id="projects" className="px-6 py-24 border-t border-zinc-900">
+    <section id="projects" className="px-6 py-24 border-t border-[#E7E2D9]">
       <div className="max-w-6xl mx-auto">
         <SectionLabel>Work</SectionLabel>
         <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
-          <h2 className="text-4xl font-bold tracking-tight">Projects</h2>
+          <h2 className="text-4xl font-bold tracking-tight text-stone-900">Projects</h2>
           <div className="flex flex-wrap gap-2">
             {FILTERS.map((f) => (
-              <button
-                key={f.id}
-                onClick={() => setFilter(f.id)}
+              <button key={f.id} onClick={() => setFilter(f.id)}
                 className={`px-4 py-1.5 rounded-full text-xs font-mono transition-all ${
                   filter === f.id
-                    ? "bg-violet-600 text-white"
-                    : "bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:border-zinc-600"
-                }`}
-              >
+                    ? "bg-[#CF6B40] text-white shadow-sm"
+                    : "bg-white border border-[#E7E2D9] text-stone-500 hover:text-stone-800 hover:border-[#D6CFCA]"
+                }`}>
                 {f.label}
               </button>
             ))}
@@ -439,26 +380,27 @@ function Projects() {
 // ─── Skills ───────────────────────────────────────────────────────────────────
 
 const SKILL_GROUPS = [
-  { label: "AI & Agents",       color: "text-violet-400", skills: ["Claude Code", "LangGraph", "FastMCP", "OpenAI API", "Gemini API", "RAG", "Prompt Engineering"] },
-  { label: "Frontend",          color: "text-sky-400",    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
-  { label: "Backend & Cloud",   color: "text-emerald-400",skills: ["Node.js", "Go", "Python", "OCI / Kubernetes", "PostgreSQL", "Oracle DB"] },
-  { label: "Product & Strategy",color: "text-amber-400",  skills: ["Roadmapping", "User Research", "A/B Testing", "MECE Frameworks", "Stakeholder Mgmt"] },
-  { label: "Certifications",    color: "text-rose-400",   skills: ["OCI Cloud Architect", "Oracle AI Certified", "Agentic Dev (Cursor, Google AI Studio)"] },
+  { label: "AI & Agents",        color: "text-violet-600",  border: "#7c3aed", skills: ["Claude Code", "LangGraph", "FastMCP", "OpenAI API", "Gemini API", "RAG", "Prompt Engineering"] },
+  { label: "Frontend",           color: "text-sky-600",     border: "#0284c7", skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
+  { label: "Backend & Cloud",    color: "text-emerald-600", border: "#059669", skills: ["Node.js", "Go", "Python", "OCI / Kubernetes", "PostgreSQL", "Oracle DB"] },
+  { label: "Product & Strategy", color: "text-[#CF6B40]",   border: "#CF6B40", skills: ["Roadmapping", "User Research", "A/B Testing", "MECE Frameworks", "Stakeholder Mgmt"] },
+  { label: "Certifications",     color: "text-red-600",     border: "#dc2626", skills: ["OCI Cloud Architect", "Oracle AI Certified", "Agentic Dev (Cursor, Google AI Studio)"] },
 ];
 
 function Skills() {
   return (
-    <section className="px-6 py-24 border-t border-zinc-900">
+    <section className="px-6 py-24 border-t border-[#E7E2D9]">
       <div className="max-w-6xl mx-auto">
         <SectionLabel>Toolkit</SectionLabel>
-        <h2 className="text-4xl font-bold tracking-tight mb-14">Skills</h2>
+        <h2 className="text-4xl font-bold tracking-tight mb-14 text-stone-900">Skills</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {SKILL_GROUPS.map((g) => (
-            <div key={g.label} className="p-5 bg-zinc-900/50 border border-zinc-800 rounded-2xl">
+            <div key={g.label} className="p-5 bg-white border border-[#E7E2D9] rounded-2xl hover:shadow-sm transition-shadow"
+              style={{ borderTop: `3px solid ${g.border}` }}>
               <h3 className={`text-xs font-mono tracking-widest uppercase mb-4 ${g.color}`}>{g.label}</h3>
               <div className="flex flex-wrap gap-2">
                 {g.skills.map((s) => (
-                  <span key={s} className="text-sm text-zinc-300 bg-zinc-800 px-3 py-1.5 rounded-lg">{s}</span>
+                  <span key={s} className="text-sm text-stone-600 bg-stone-50 border border-[#E7E2D9] px-3 py-1.5 rounded-lg">{s}</span>
                 ))}
               </div>
             </div>
@@ -469,29 +411,29 @@ function Skills() {
   );
 }
 
-
 // ─── Contact ──────────────────────────────────────────────────────────────────
 
 function Contact() {
   return (
-    <section id="contact" className="relative px-6 py-32 border-t border-zinc-900">
-      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-96 h-64 bg-violet-600/10 blur-[80px] rounded-full" />
+    <section id="contact" className="relative px-6 py-32 border-t border-[#E7E2D9]">
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-96 h-64 bg-[#CF6B40]/6 blur-[80px] rounded-full" />
       <div className="relative max-w-3xl mx-auto text-center">
         <SectionLabel>Let's talk</SectionLabel>
-        <h2 className="text-5xl font-bold tracking-tighter mb-5">Get in touch</h2>
-        <p className="text-zinc-500 mb-10 max-w-md mx-auto leading-relaxed">
+        <h2 className="text-5xl font-bold tracking-tighter mb-5 text-stone-900">Get in touch</h2>
+        <p className="text-stone-400 mb-10 max-w-md mx-auto leading-relaxed">
           Open to PM and engineering roles, consulting engagements, and interesting AI projects. Based in Seattle.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <a href="mailto:mokarma@uw.edu" className="flex items-center gap-2 px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-full transition-colors">
+          <a href="mailto:mokarma@uw.edu"
+            className="flex items-center gap-2 px-6 py-3 bg-[#CF6B40] hover:bg-[#B85C34] text-white text-sm font-semibold rounded-full transition-colors shadow-sm">
             <MailIcon /> mokarma@uw.edu
           </a>
           <a href="https://www.linkedin.com/in/mohan-marada/" target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 text-sm font-medium rounded-full transition-colors">
+            className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm">
             <LinkedInIcon size={15} /> LinkedIn
           </a>
           <a href="https://github.com/mmarada" target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 text-sm font-medium rounded-full transition-colors">
+            className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm">
             <GithubIcon size={15} /> GitHub
           </a>
         </div>
@@ -504,10 +446,10 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-zinc-900 px-6 py-6">
+    <footer className="border-t border-[#E7E2D9] px-6 py-6 bg-white">
       <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
-        <span className="font-mono text-xs text-zinc-600">© {new Date().getFullYear()} Mohan Vamshi Marada</span>
-        <span className="font-mono text-xs text-zinc-700">Seattle, WA · mokarma@uw.edu</span>
+        <span className="font-mono text-xs text-stone-300">© {new Date().getFullYear()} Mohan Vamshi Marada</span>
+        <span className="font-mono text-xs text-stone-300">Seattle, WA · mokarma@uw.edu</span>
       </div>
     </footer>
   );
@@ -516,7 +458,7 @@ function Footer() {
 // ─── Shared ───────────────────────────────────────────────────────────────────
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <p className="font-mono text-[11px] text-violet-400 tracking-[0.2em] uppercase mb-3">{children}</p>;
+  return <p className="font-mono text-[11px] text-[#CF6B40] tracking-[0.2em] uppercase mb-3">{children}</p>;
 }
 
 function GithubIcon({ size = 16 }: { size?: number }) {
