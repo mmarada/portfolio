@@ -192,23 +192,23 @@ function CompanyLogo({ logo, logoBg, logoText, size = 44 }: {
 
 function ExpCard({ exp }: { exp: typeof EXPERIENCE_CARDS[number] }) {
   return (
-    <div className="flex-1 p-5 bg-white border border-[#E7E2D9] rounded-2xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-3">
-      <div className="flex items-start justify-between gap-2">
-        <CompanyLogo logo={exp.logo} logoBg={exp.logoBg} logoText={exp.logoText} />
-        <span className="text-[11px] font-mono text-stone-400 mt-1 text-right leading-tight">{exp.period}</span>
+    <div className="flex-1 p-3.5 bg-white border border-[#E7E2D9] rounded-xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-2">
+      <div className="flex items-center justify-between gap-2">
+        <CompanyLogo logo={exp.logo} logoBg={exp.logoBg} logoText={exp.logoText} size={32} />
+        <span className="text-[10px] font-mono text-stone-400 text-right leading-tight">{exp.period}</span>
       </div>
       <div>
         {exp.companyUrl ? (
           <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer"
-            className="text-base font-semibold text-stone-900 hover:text-[#CF6B40] transition-colors flex items-center gap-1">
+            className="text-sm font-semibold text-stone-900 hover:text-[#CF6B40] transition-colors flex items-center gap-1">
             {exp.company} <ExternalLinkIcon />
           </a>
         ) : (
-          <p className="text-base font-semibold text-stone-900">{exp.company}</p>
+          <p className="text-sm font-semibold text-stone-900">{exp.company}</p>
         )}
-        <p className={`text-sm font-medium mt-0.5 ${exp.accentClass}`}>{exp.role}</p>
-        <p className="text-xs text-stone-400 mt-1">{exp.location}</p>
-        {exp.note && <p className="text-xs text-stone-400 mt-1 italic">{exp.note}</p>}
+        <p className={`text-xs font-medium mt-0.5 ${exp.accentClass}`}>{exp.role}</p>
+        <p className="text-[11px] text-stone-400 mt-0.5">{exp.location}</p>
+        {exp.note && <p className="text-[11px] text-stone-400 mt-0.5 italic">{exp.note}</p>}
       </div>
     </div>
   );
@@ -225,7 +225,7 @@ function Experience() {
         </h2>
 
         {/* Career progression: Oracle → Ansemble AI */}
-        <div className="flex flex-col sm:flex-row items-stretch gap-0 mb-6 max-w-2xl mx-auto">
+        <div className="flex flex-col sm:flex-row items-stretch gap-0 mb-3 max-w-2xl mx-auto">
           <ExpCard exp={EXPERIENCE_CARDS[0]} />
 
           {/* Arrow connector */}
@@ -248,16 +248,16 @@ function Experience() {
         </div>
 
         {/* Education cards */}
-        <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+        <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
           {EDUCATION_CARDS.map((edu) => (
             <div key={edu.id}
-              className="flex-1 p-5 bg-white border border-[#E7E2D9] rounded-2xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-3">
-              <CompanyLogo logo={edu.logo} logoBg={edu.logoBg} logoText={edu.logoText} />
+              className="flex-1 p-3.5 bg-white border border-[#E7E2D9] rounded-xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-2">
+              <CompanyLogo logo={edu.logo} logoBg={edu.logoBg} logoText={edu.logoText} size={32} />
               <div>
-                <p className="text-[11px] font-mono text-stone-400 mb-0.5">{edu.period}</p>
-                <p className="text-base font-semibold text-stone-900">{edu.school}</p>
-                <p className={`text-sm font-medium mt-0.5 ${edu.accentClass}`}>{edu.degree}</p>
-                <p className="text-xs text-stone-400 mt-1">{edu.note}</p>
+                <p className="text-[10px] font-mono text-stone-400 mb-0.5">{edu.period}</p>
+                <p className="text-sm font-semibold text-stone-900">{edu.school}</p>
+                <p className={`text-xs font-medium mt-0.5 ${edu.accentClass}`}>{edu.degree}</p>
+                <p className="text-[11px] text-stone-400 mt-0.5">{edu.note}</p>
               </div>
             </div>
           ))}
