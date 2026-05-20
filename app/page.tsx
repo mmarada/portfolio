@@ -103,68 +103,189 @@ function Hero() {
   );
 }
 
-// ─── Experience ───────────────────────────────────────────────────────────────
+// ─── Experience & Education (manky.me style) ─────────────────────────────────
 
-const EXPERIENCE = [
+const EXPERIENCE_CARDS = [
   {
-    company: "Ansemble AI",
-    role: "Founding Engineer",
+    id: "ansemble",
     period: "2024 – 2025",
-    location: "USA",
-    color: "bg-violet-500",
-    description: "All-in-one OS for indie artists to create, analyze, and market their music.",
-    bullets: [
-      "Led web/mobile development from founder vision to MVP, onboarding 6+ high-potential artists and securing >$500k seed funding.",
-      "Built AI-assisted workflows and smart-versioning increasing artist productivity by 70% via real-time qualitative insights.",
-      "Designed a high-authenticity data engine pulling from 10+ streaming platforms and soundcharts for data-driven marketing decisions.",
-    ],
+    company: "Ansemble AI",
+    companyUrl: null,
+    role: "Founding Engineer",
+    location: "USA (Remote)",
+    note: "Music × AI startup",
+    logo: null,
+    logoBg: "bg-gradient-to-br from-violet-600 to-purple-700",
+    logoText: "A",
+    accentClass: "text-violet-400",
   },
   {
+    id: "oracle-arch",
+    period: "2021 – 2025",
     company: "Oracle",
-    role: "Software Architect → Application Developer",
-    period: "2018 – 2025",
+    companyUrl: "https://oracle.com",
+    role: "Software Architect",
     location: "Hyderabad, India",
-    color: "bg-red-500",
-    description: "Core Framework team — enterprise batch microservices and cloud-native migrations.",
-    bullets: [
-      "Led cloud-native migration of enterprise batch microservices to OCI Kubernetes, reducing client operational costs by 30% and boosting batch throughput by ~20%.",
-      "Developed secure data export from Oracle DB to OCI storage using parallel writes, reducing export time by ~25%.",
-      "Improved customer dashboards and UX, saving ~$800k in annual support costs.",
-      "Mitigated platform risk exposure of $1M+ annually by patching CVSS vulnerabilities, reducing issues by 80%.",
-      "Optimized build times from 6+ hrs → ~4 hrs, saving ~1200 engineering hours/year.",
-    ],
+    note: "Core Framework team",
+    logo: "https://logo.clearbit.com/oracle.com",
+    logoBg: "bg-white",
+    logoText: "O",
+    accentClass: "text-red-400",
+  },
+  {
+    id: "oracle-ase",
+    period: "2018 – 2021",
+    company: "Oracle",
+    companyUrl: "https://oracle.com",
+    role: "App Developer → Assoc. SE",
+    location: "Hyderabad, India",
+    note: "Security & platform team",
+    logo: "https://logo.clearbit.com/oracle.com",
+    logoBg: "bg-white",
+    logoText: "O",
+    accentClass: "text-red-400",
   },
 ];
 
+const EDUCATION_CARDS = [
+  {
+    id: "uw",
+    period: "2025 – 2027 · Seattle, WA",
+    school: "University of Washington",
+    degree: "MBA · Management Science (STEM)",
+    note: "Dean's Merit Scholar · Foster Tech Club · Strategy Club",
+    logo: "https://logo.clearbit.com/washington.edu",
+    logoBg: "bg-white",
+    logoText: "W",
+    accentClass: "text-purple-400",
+  },
+  {
+    id: "osmania",
+    period: "2014 – 2018 · Hyderabad, India",
+    school: "Osmania University",
+    degree: "B.E. · Computer Science and Engineering",
+    note: "IIT-JEE 10k ranker · State 9th rank in Math Olympiads",
+    logo: null,
+    logoBg: "bg-gradient-to-br from-amber-600 to-orange-700",
+    logoText: "OU",
+    accentClass: "text-amber-400",
+  },
+];
+
+function CompanyLogo({
+  logo, logoBg, logoText, size = 48,
+}: {
+  logo: string | null; logoBg: string; logoText: string; size?: number;
+}) {
+  if (logo) {
+    return (
+      /* eslint-disable-next-line @next/next/no-img-element */
+      <img
+        src={logo}
+        alt={logoText}
+        width={size}
+        height={size}
+        className="rounded-xl object-contain bg-white p-1"
+        onError={(e) => {
+          const t = e.currentTarget;
+          t.style.display = "none";
+          const sib = t.nextElementSibling as HTMLElement | null;
+          if (sib) sib.style.display = "flex";
+        }}
+      />
+    );
+  }
+  return (
+    <div
+      className={`${logoBg} rounded-xl flex items-center justify-center text-white font-bold text-sm`}
+      style={{ width: size, height: size }}
+    >
+      {logoText}
+    </div>
+  );
+}
+
 function Experience() {
   return (
-    <section id="experience" className="px-6 py-24">
-      <div className="max-w-4xl mx-auto">
-        <SectionLabel>Experience</SectionLabel>
-        <h2 className="text-4xl font-bold tracking-tight mb-14">Where I've worked</h2>
-        <div className="relative pl-6 border-l border-zinc-800 space-y-12">
-          {EXPERIENCE.map((exp) => (
-            <div key={exp.company} className="relative">
-              <div className={`absolute -left-[25px] top-1 w-3 h-3 rounded-full ${exp.color} ring-4 ring-[#060608]`} />
-              <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-                <div>
-                  <h3 className="text-lg font-semibold text-zinc-100">{exp.company}</h3>
-                  <p className="text-sm text-zinc-400">{exp.role}</p>
+    <section id="experience" className="px-6 py-24 border-t border-zinc-900">
+      <div className="max-w-5xl mx-auto">
+        {/* Section heading — manky.me serif style adapted */}
+        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center mb-14">
+          Experience{" "}
+          <span className="text-zinc-600">&amp;</span>{" "}
+          <span className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
+            Education
+          </span>
+        </h2>
+
+        {/* Experience cards — horizontal row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          {EXPERIENCE_CARDS.map((exp) => (
+            <div
+              key={exp.id}
+              className="p-5 bg-zinc-900/60 border border-zinc-800 rounded-2xl hover:border-zinc-600 transition-colors flex flex-col gap-3"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="relative">
+                  <CompanyLogo logo={exp.logo} logoBg={exp.logoBg} logoText={exp.logoText} size={44} />
+                  {/* fallback div hidden by default */}
+                  <div
+                    className={`${exp.logoBg} rounded-xl items-center justify-center text-white font-bold text-sm hidden`}
+                    style={{ width: 44, height: 44 }}
+                  >
+                    {exp.logoText}
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-sm font-mono text-zinc-500">{exp.period}</p>
-                  <p className="text-xs text-zinc-600">{exp.location}</p>
+                <span className="text-[11px] font-mono text-zinc-600 mt-1">{exp.period}</span>
+              </div>
+              <div>
+                <p className="text-xs text-zinc-600 mb-0.5">{exp.period}</p>
+                {exp.companyUrl ? (
+                  <a
+                    href={exp.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base font-semibold text-zinc-100 hover:text-zinc-300 transition-colors flex items-center gap-1"
+                  >
+                    {exp.company} <ExternalLinkIcon />
+                  </a>
+                ) : (
+                  <p className="text-base font-semibold text-zinc-100">{exp.company}</p>
+                )}
+                <p className={`text-sm font-medium mt-0.5 ${exp.accentClass}`}>{exp.role}</p>
+                <p className="text-xs text-zinc-500 mt-1">{exp.location}</p>
+                {exp.note && (
+                  <p className="text-xs text-zinc-600 mt-1 italic">{exp.note}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Education cards — centered below */}
+        <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+          {EDUCATION_CARDS.map((edu) => (
+            <div
+              key={edu.id}
+              className="flex-1 p-5 bg-zinc-900/60 border border-zinc-800 rounded-2xl hover:border-zinc-600 transition-colors flex flex-col gap-3"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div className="relative">
+                  <CompanyLogo logo={edu.logo} logoBg={edu.logoBg} logoText={edu.logoText} size={44} />
+                  <div
+                    className={`${edu.logoBg} rounded-xl items-center justify-center text-white font-bold text-sm hidden`}
+                    style={{ width: 44, height: 44 }}
+                  >
+                    {edu.logoText}
+                  </div>
                 </div>
               </div>
-              <p className="text-sm text-zinc-500 italic mb-3">{exp.description}</p>
-              <ul className="space-y-2">
-                {exp.bullets.map((b, i) => (
-                  <li key={i} className="flex gap-2 text-sm text-zinc-400 leading-relaxed">
-                    <span className="text-zinc-600 mt-1 shrink-0">→</span>
-                    {b}
-                  </li>
-                ))}
-              </ul>
+              <div>
+                <p className="text-[11px] font-mono text-zinc-600 mb-0.5">{edu.period}</p>
+                <p className="text-base font-semibold text-zinc-100">{edu.school}</p>
+                <p className={`text-sm font-medium mt-0.5 ${edu.accentClass}`}>{edu.degree}</p>
+                <p className="text-xs text-zinc-500 mt-1">{edu.note}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -348,42 +469,6 @@ function Skills() {
   );
 }
 
-// ─── Education ────────────────────────────────────────────────────────────────
-
-function Education() {
-  return (
-    <section className="px-6 py-16 border-t border-zinc-900">
-      <div className="max-w-4xl mx-auto">
-        <SectionLabel>Education</SectionLabel>
-        <h2 className="text-4xl font-bold tracking-tight mb-10">Academic background</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="p-6 bg-gradient-to-br from-purple-950 to-indigo-950 border border-purple-900/50 rounded-2xl">
-            <p className="text-xs font-mono text-purple-400 mb-3">2025 – 2027</p>
-            <h3 className="text-lg font-bold text-white mb-1">Foster School of Business</h3>
-            <p className="text-sm text-zinc-300 mb-1">University of Washington, Seattle</p>
-            <p className="text-sm text-zinc-400 mb-3">MBA · Management Science (STEM)</p>
-            <div className="flex flex-wrap gap-2">
-              {["Dean's Merit Scholar", "Foster Tech Club", "Strategy Club"].map((t) => (
-                <span key={t} className="text-xs bg-purple-900/60 text-purple-300 px-2.5 py-1 rounded-full">{t}</span>
-              ))}
-            </div>
-          </div>
-          <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl">
-            <p className="text-xs font-mono text-zinc-500 mb-3">2014 – 2018</p>
-            <h3 className="text-lg font-bold text-white mb-1">Osmania University</h3>
-            <p className="text-sm text-zinc-400 mb-1">University College of Engineering, Hyderabad</p>
-            <p className="text-sm text-zinc-500 mb-3">B.E. · Computer Science and Engineering</p>
-            <div className="flex flex-wrap gap-2">
-              {["IIT-JEE 10k ranker", "State 9th · Math Olympiads"].map((t) => (
-                <span key={t} className="text-xs bg-zinc-800 text-zinc-400 px-2.5 py-1 rounded-full">{t}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ─── Contact ──────────────────────────────────────────────────────────────────
 
@@ -482,7 +567,6 @@ export default function Home() {
         <Experience />
         <Projects />
         <Skills />
-        <Education />
         <Contact />
       </main>
       <Footer />
