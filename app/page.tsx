@@ -14,6 +14,7 @@ const NAV_LINKS = [
 ];
 
 function Nav() {
+  const [active, setActive] = useState<string | null>(null);
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <nav className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
@@ -23,9 +24,10 @@ function Nav() {
             <a key={l.href} href={l.href}
               target={l.external ? "_blank" : undefined}
               rel={l.external ? "noopener noreferrer" : undefined}
+              onClick={() => setActive(l.href)}
               className={`px-3 py-1 text-sm rounded-full transition-all ${
-                l.label === "Resume"
-                  ? "text-[#CF6B40] font-semibold hover:bg-[#CF6B40]/10"
+                active === l.href
+                  ? "bg-[#CF6B40] text-white font-semibold"
                   : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
               }`}>
               {l.label}
