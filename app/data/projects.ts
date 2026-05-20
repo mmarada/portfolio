@@ -14,7 +14,7 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  // ── Live demo projects first ─────────────────────────────────────────────
+  // ── Row 1 ────────────────────────────────────────────────────────────────
   {
     id: "nestdirect",
     title: "NestDirect",
@@ -30,18 +30,18 @@ export const projects: Project[] = [
     accentColor: "#0f766e",
   },
   {
-    id: "elective-hub",
-    title: "Elective Hub",
-    tagline: "UW course planner",
+    id: "stockriskmgr",
+    title: "Stock Risk Manager",
+    tagline: "Portfolio risk analyzer",
     description:
-      "AI-powered course planner for UW students — discovers electives, checks prerequisites, models scheduling, and suggests paths by major and interest.",
-    tags: ["TypeScript", "Gemini API", "Next.js"],
-    category: "fullstack",
-    github: "https://github.com/mmarada/elective_hub",
-    demo: "https://electivedashboard.vercel.app/",
-    gradient: "from-violet-100 to-purple-100",
-    borderColor: "#7c3aed",
-    accentColor: "#6d28d9",
+      "Risk-aware stock portfolio optimizer — suggests allocations from a risk questionnaire, models returns, and runs what-if scenario analytics.",
+    tags: ["TypeScript", "Next.js", "Finance"],
+    category: "ai",
+    github: "https://github.com/mmarada/stockriskmgr",
+    demo: "https://stockriskmgr.vercel.app/",
+    gradient: "from-green-100 to-emerald-100",
+    borderColor: "#16a34a",
+    accentColor: "#15803d",
   },
   {
     id: "fifa26",
@@ -56,6 +56,21 @@ export const projects: Project[] = [
     gradient: "from-rose-100 to-pink-100",
     borderColor: "#e11d48",
     accentColor: "#be123c",
+  },
+  // ── Row 2 ────────────────────────────────────────────────────────────────
+  {
+    id: "elective-hub",
+    title: "Elective Hub",
+    tagline: "UW course planner",
+    description:
+      "AI-powered course planner for UW students — discovers electives, checks prerequisites, models scheduling, and suggests paths by major and interest.",
+    tags: ["TypeScript", "Gemini API", "Next.js"],
+    category: "fullstack",
+    github: "https://github.com/mmarada/elective_hub",
+    demo: "https://electivedashboard.vercel.app/",
+    gradient: "from-violet-100 to-purple-100",
+    borderColor: "#7c3aed",
+    accentColor: "#6d28d9",
   },
   {
     id: "chess",
@@ -85,7 +100,7 @@ export const projects: Project[] = [
     borderColor: "#64748b",
     accentColor: "#475569",
   },
-  // ── No live demo ─────────────────────────────────────────────────────────
+  // ── Row 3 — no live demo ─────────────────────────────────────────────────
   {
     id: "portify",
     title: "Portify",
@@ -123,20 +138,6 @@ export const projects: Project[] = [
     gradient: "from-orange-100 to-red-100",
     borderColor: "#ea580c",
     accentColor: "#c2410c",
-  },
-  {
-    id: "stockriskmgr",
-    title: "Stock Risk Manager",
-    tagline: "Portfolio risk analyzer",
-    description:
-      "Risk-aware stock portfolio optimizer — suggests allocations from a risk questionnaire, models returns, and runs what-if scenario analytics.",
-    tags: ["TypeScript", "Next.js", "Finance"],
-    category: "ai",
-    github: "https://github.com/mmarada/stockriskmgr",
-    demo: "https://stockriskmgr.vercel.app/",
-    gradient: "from-green-100 to-emerald-100",
-    borderColor: "#16a34a",
-    accentColor: "#15803d",
   },
   {
     id: "recur8ion",
