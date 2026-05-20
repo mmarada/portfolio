@@ -49,7 +49,7 @@ function Hero() {
       {/* Background photo — UW / PNW nature */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1920&q=80"
+        src="https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=1920&q=80"
         alt=""
         aria-hidden
         className="absolute inset-0 w-full h-full object-cover"
