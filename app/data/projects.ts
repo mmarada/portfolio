@@ -123,6 +123,7 @@ export const projects: Project[] = [
     tags: ["LangGraph", "FastMCP", "Python", "SQLite"],
     category: "ai",
     github: "https://github.com/mmarada/testServerContextO",
+    demo: "https://contexto-dev.lovable.app/#features",
     gradient: "from-sky-100 to-blue-100",
     borderColor: "#0284c7",
     accentColor: "#0369a1",
