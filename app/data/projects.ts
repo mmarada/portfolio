@@ -87,20 +87,6 @@ export const projects: Project[] = [
   },
   // ── No live demo ─────────────────────────────────────────────────────────
   {
-    id: "career-ops",
-    title: "Career-Ops",
-    tagline: "AI job search pipeline",
-    description:
-      "Turns Claude Code into a full job search command center — A–F scoring across 740+ offers, ATS-optimized CVs, auto-scrapes 45+ portals via Playwright. Used to land a Head of Applied AI role.",
-    tags: ["Claude Code", "Go", "Node.js", "Playwright"],
-    category: "ai",
-    github: "https://github.com/mmarada/career-ops",
-    span: "wide",
-    gradient: "from-orange-100 via-amber-100 to-yellow-100",
-    borderColor: "#CF6B40",
-    accentColor: "#CF6B40",
-  },
-  {
     id: "portify",
     title: "Portify",
     tagline: "One-click portfolio builder",
