@@ -103,43 +103,30 @@ function Hero() {
 
 const EXPERIENCE_CARDS = [
   {
+    id: "oracle",
+    period: "2018 – 2025",
+    company: "Oracle",
+    companyUrl: "https://oracle.com",
+    role: "Software Architect",
+    location: "Hyderabad, India",
+    note: "Core Framework, Security & platform teams · 7 years",
+    logo: "/logos/oracle.svg",
+    logoBg: "bg-white",
+    logoText: "O",
+    accentClass: "text-red-600",
+  },
+  {
     id: "ansemble",
     period: "2024 – 2025",
     company: "Ansemble AI",
     companyUrl: null,
     role: "Founding Engineer",
     location: "USA (Remote)",
-    note: "Music × AI startup",
+    note: "Music × AI startup · $500k+ raised",
     logo: "/logos/ansemble.svg",
     logoBg: "bg-[#0d0d1a]",
     logoText: "A",
     accentClass: "text-violet-600",
-  },
-  {
-    id: "oracle-arch",
-    period: "2021 – 2025",
-    company: "Oracle",
-    companyUrl: "https://oracle.com",
-    role: "Software Architect",
-    location: "Hyderabad, India",
-    note: "Core Framework team",
-    logo: "/logos/oracle.svg",
-    logoBg: "bg-white",
-    logoText: "O",
-    accentClass: "text-red-600",
-  },
-  {
-    id: "oracle-dev",
-    period: "2018 – 2021",
-    company: "Oracle",
-    companyUrl: "https://oracle.com",
-    role: "App Developer → Assoc. SE",
-    location: "Hyderabad, India",
-    note: "Security & platform team",
-    logo: "/logos/oracle.svg",
-    logoBg: "bg-white",
-    logoText: "O",
-    accentClass: "text-red-600",
   },
 ];
 
@@ -203,6 +190,30 @@ function CompanyLogo({ logo, logoBg, logoText, size = 44 }: {
   );
 }
 
+function ExpCard({ exp }: { exp: typeof EXPERIENCE_CARDS[number] }) {
+  return (
+    <div className="flex-1 p-5 bg-white border border-[#E7E2D9] rounded-2xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-3">
+      <div className="flex items-start justify-between gap-2">
+        <CompanyLogo logo={exp.logo} logoBg={exp.logoBg} logoText={exp.logoText} />
+        <span className="text-[11px] font-mono text-stone-400 mt-1 text-right leading-tight">{exp.period}</span>
+      </div>
+      <div>
+        {exp.companyUrl ? (
+          <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer"
+            className="text-base font-semibold text-stone-900 hover:text-[#CF6B40] transition-colors flex items-center gap-1">
+            {exp.company} <ExternalLinkIcon />
+          </a>
+        ) : (
+          <p className="text-base font-semibold text-stone-900">{exp.company}</p>
+        )}
+        <p className={`text-sm font-medium mt-0.5 ${exp.accentClass}`}>{exp.role}</p>
+        <p className="text-xs text-stone-400 mt-1">{exp.location}</p>
+        {exp.note && <p className="text-xs text-stone-400 mt-1 italic">{exp.note}</p>}
+      </div>
+    </div>
+  );
+}
+
 function Experience() {
   return (
     <section id="experience" className="px-6 py-24 border-t border-[#E7E2D9]">
@@ -213,36 +224,27 @@ function Experience() {
           <span className="text-[#CF6B40]">Education</span>
         </h2>
 
-        {/* Experience cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          {EXPERIENCE_CARDS.map((exp) => (
-            <div key={exp.id}
-              className="p-5 bg-white border border-[#E7E2D9] rounded-2xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-3">
-              <div className="flex items-start justify-between gap-2">
-                <CompanyLogo logo={exp.logo} logoBg={exp.logoBg} logoText={exp.logoText} />
-                <div
-                  className="rounded-xl items-center justify-center text-white font-bold text-sm hidden"
-                  style={{ width: 44, height: 44 }}
-                >
-                  {exp.logoText}
-                </div>
-                <span className="text-[11px] font-mono text-stone-400 mt-1 text-right leading-tight">{exp.period}</span>
-              </div>
-              <div>
-                {exp.companyUrl ? (
-                  <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer"
-                    className="text-base font-semibold text-stone-900 hover:text-[#CF6B40] transition-colors flex items-center gap-1">
-                    {exp.company} <ExternalLinkIcon />
-                  </a>
-                ) : (
-                  <p className="text-base font-semibold text-stone-900">{exp.company}</p>
-                )}
-                <p className={`text-sm font-medium mt-0.5 ${exp.accentClass}`}>{exp.role}</p>
-                <p className="text-xs text-stone-400 mt-1">{exp.location}</p>
-                {exp.note && <p className="text-xs text-stone-300 mt-1 italic">{exp.note}</p>}
-              </div>
-            </div>
-          ))}
+        {/* Career progression: Oracle → Ansemble AI */}
+        <div className="flex flex-col sm:flex-row items-stretch gap-0 mb-6 max-w-2xl mx-auto">
+          <ExpCard exp={EXPERIENCE_CARDS[0]} />
+
+          {/* Arrow connector */}
+          <div className="flex sm:flex-col items-center justify-center px-3 py-2 gap-1 shrink-0">
+            <span className="text-[10px] font-mono text-stone-300 hidden sm:block whitespace-nowrap rotate-0">next →</span>
+            {/* Mobile: down arrow */}
+            <svg className="sm:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D6CFCA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <polyline points="19 12 12 19 5 12" />
+            </svg>
+            {/* Desktop: right arrow */}
+            <svg className="hidden sm:block" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#CF6B40" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+            <span className="text-[10px] font-mono text-stone-300 hidden sm:block whitespace-nowrap">startup</span>
+          </div>
+
+          <ExpCard exp={EXPERIENCE_CARDS[1]} />
         </div>
 
         {/* Education cards */}
@@ -251,12 +253,6 @@ function Experience() {
             <div key={edu.id}
               className="flex-1 p-5 bg-white border border-[#E7E2D9] rounded-2xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-3">
               <CompanyLogo logo={edu.logo} logoBg={edu.logoBg} logoText={edu.logoText} />
-              <div
-                className="rounded-xl items-center justify-center text-white font-bold text-sm hidden"
-                style={{ width: 44, height: 44 }}
-              >
-                {edu.logoText}
-              </div>
               <div>
                 <p className="text-[11px] font-mono text-stone-400 mb-0.5">{edu.period}</p>
                 <p className="text-base font-semibold text-stone-900">{edu.school}</p>
@@ -288,7 +284,7 @@ function LivePreview({ url }: { url: string }) {
 function GradientPreview({ gradient, title }: { gradient: string; title: string }) {
   return (
     <div className={`w-full bg-gradient-to-br ${gradient} flex items-center justify-center`} style={{ height: 210 }}>
-      <span className="text-stone-300 text-3xl font-bold tracking-tighter select-none">{title}</span>
+      <span className="text-stone-500 text-3xl font-bold tracking-tighter select-none opacity-40">{title}</span>
     </div>
   );
 }
