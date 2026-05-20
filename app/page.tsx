@@ -135,35 +135,6 @@ function About() {
             Looking for opportunities and next roles.
           </p>
 
-          <div className="pt-4 flex flex-wrap gap-3">
-            <a href="mailto:mokarma@uw.edu"
-              className="px-5 py-2.5 bg-[#CF6B40] hover:bg-[#B85C34] text-white text-sm font-semibold rounded-full transition-colors shadow-sm">
-              Get in touch
-            </a>
-            <a href="/resume/resume.pdf" target="_blank" rel="noopener noreferrer"
-              className="px-5 py-2.5 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm flex items-center gap-2">
-              View Resume <ExternalLinkIcon />
-            </a>
-            <a href="https://www.linkedin.com/in/mohan-marada/" target="_blank" rel="noopener noreferrer"
-              className="px-5 py-2.5 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm flex items-center gap-2">
-              <LinkedInIcon size={14} /> LinkedIn
-            </a>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[#E7E2D9] border border-[#E7E2D9] rounded-2xl overflow-hidden mt-14 shadow-sm">
-          {[
-            { value: "7 yrs",  label: "at Oracle"           },
-            { value: "$500k+", label: "seed raised"          },
-            { value: "MBA",    label: "Dean's Merit Scholar" },
-            { value: "30%",    label: "cost reduction led"   },
-          ].map((s) => (
-            <div key={s.label} className="bg-white px-6 py-5 text-center">
-              <p className="text-2xl font-bold text-stone-900 tracking-tight">{s.value}</p>
-              <p className="text-xs text-stone-400 mt-1">{s.label}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
