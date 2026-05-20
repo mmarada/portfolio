@@ -289,13 +289,15 @@ function Experience() {
           <ExpCard exp={EXPERIENCE_CARDS[1]} />
         </div>
 
-        {/* Education cards */}
-        <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
+        {/* Education cards — stacked vertically, logo left */}
+        <div className="flex flex-col gap-3 max-w-2xl mx-auto">
           {EDUCATION_CARDS.map((edu) => (
             <div key={edu.id}
-              className="flex-1 p-3.5 bg-white border border-[#E7E2D9] rounded-xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex flex-col gap-2">
-              <CompanyLogo logo={edu.logo} logoBg={edu.logoBg} logoText={edu.logoText} size={32} />
-              <div>
+              className="p-4 bg-white border border-[#E7E2D9] rounded-xl hover:border-[#D6CFCA] hover:shadow-md transition-all flex items-center gap-4">
+              <div className="shrink-0">
+                <CompanyLogo logo={edu.logo} logoBg={edu.logoBg} logoText={edu.logoText} size={44} />
+              </div>
+              <div className="min-w-0">
                 <p className="text-[10px] font-mono text-stone-400 mb-0.5">{edu.period}</p>
                 <p className="text-sm font-semibold text-stone-900">{edu.school}</p>
                 <p className={`text-xs font-medium mt-0.5 ${edu.accentClass}`}>{edu.degree}</p>
