@@ -5,20 +5,29 @@ import { projects, type Project } from "./data/projects";
 
 // ─── Nav ──────────────────────────────────────────────────────────────────────
 
+const NAV_LINKS = [
+  { label: "About",      href: "#about"                    },
+  { label: "Experience", href: "#experience"               },
+  { label: "Projects",   href: "#projects"                 },
+  { label: "Contact",    href: "#contact"                  },
+  { label: "Resume",     href: "/resume/resume.pdf", external: true },
+];
+
 function Nav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <nav className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
         <span className="font-mono text-sm text-stone-400 tracking-widest">mvm</span>
         <div className="flex items-center gap-1 bg-white/90 border border-[#E7E2D9] backdrop-blur-md rounded-full px-3 py-2 shadow-sm">
-          {[
-            { label: "About",      href: "#about"      },
-            { label: "Experience", href: "#experience" },
-            { label: "Projects",   href: "#projects"   },
-            { label: "Contact",    href: "#contact"    },
-          ].map((l) => (
+          {NAV_LINKS.map((l) => (
             <a key={l.href} href={l.href}
-              className="px-3 py-1 text-sm text-stone-500 hover:text-stone-900 rounded-full hover:bg-stone-100 transition-all">
+              target={l.external ? "_blank" : undefined}
+              rel={l.external ? "noopener noreferrer" : undefined}
+              className={`px-3 py-1 text-sm rounded-full transition-all ${
+                l.label === "Resume"
+                  ? "text-[#CF6B40] font-semibold hover:bg-[#CF6B40]/10"
+                  : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
+              }`}>
               {l.label}
             </a>
           ))}
@@ -36,52 +45,114 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="about" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
-      {/* Subtle warm glow */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="w-[600px] h-[400px] rounded-full bg-[#CF6B40]/8 blur-[100px]" />
+    <section className="relative h-screen overflow-hidden flex items-end" style={{
+      background: "linear-gradient(150deg, #0e1a09 0%, #1b2f10 20%, #243318 45%, #1e2b14 65%, #111a0c 85%, #080e05 100%)"
+    }}>
+      {/* Organic light pools */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-16 right-1/4 w-[500px] h-[500px] rounded-full opacity-25"
+          style={{ background: "radial-gradient(circle, #4a6b2a 0%, transparent 65%)" }} />
+        <div className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-15"
+          style={{ background: "radial-gradient(circle, #3d5522 0%, transparent 70%)" }} />
+        <div className="absolute bottom-1/2 left-1/3 w-48 h-48 rounded-full opacity-10"
+          style={{ background: "radial-gradient(circle, #5a7a30 0%, transparent 70%)" }} />
+        {/* Warm bottom glow */}
+        <div className="absolute bottom-0 left-0 w-96 h-64 opacity-20"
+          style={{ background: "radial-gradient(ellipse at bottom left, #CF6B40 0%, transparent 70%)" }} />
       </div>
 
-      <div className="relative z-10 max-w-4xl w-full text-center">
-        {/* Status pill */}
-        <div className="inline-flex items-center gap-2 bg-white border border-[#E7E2D9] rounded-full px-4 py-1.5 mb-8 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs text-stone-500 font-mono">Open to PM & Engineering roles · Seattle, WA</span>
+      {/* Film grain texture */}
+      <div className="absolute inset-0 opacity-[0.06] pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundSize: "180px 180px"
+        }} />
+
+      {/* Bottom-left content */}
+      <div className="relative z-10 px-10 sm:px-16 pb-16 sm:pb-20 max-w-2xl">
+        <div className="inline-flex items-center gap-2 mb-5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-white/50 text-xs font-mono tracking-widest uppercase">Open to roles · Seattle, WA</span>
         </div>
 
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-none text-stone-900">
-          Mohan{" "}
-          <span className="text-[#CF6B40]">Vamshi</span>
-          <br />Marada
+        <h1 className="text-6xl sm:text-8xl font-bold text-white leading-none mb-4 tracking-tight">
+          Mohan<br />Marada
         </h1>
 
-        <p className="text-lg sm:text-xl text-stone-500 max-w-2xl mx-auto mb-12 leading-relaxed">
-          Hi, I&apos;m Mohan Marada — CS + MBA grad. Previously{" "}
-          <span className="text-stone-800 font-medium">@Oracle</span> and{" "}
-          <span className="text-stone-800 font-medium">@Ansemble AI</span> in the music space.
-          My skills span <span className="text-[#CF6B40] font-medium">technical architecture</span>,{" "}
-          <span className="text-[#CF6B40] font-medium">product management</span>, and{" "}
-          <span className="text-[#CF6B40] font-medium">full-stack development</span>.
-          Looking for my next opportunity.
+        <p className="text-white/60 text-xl sm:text-2xl mb-10 font-light leading-snug">
+          Software Architect + Product Builder
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
-          <a href="#projects"
-            className="px-6 py-3 bg-[#CF6B40] hover:bg-[#B85C34] text-white text-sm font-semibold rounded-full transition-colors shadow-sm">
-            View projects
-          </a>
-          <a href="mailto:mokarma@uw.edu"
-            className="px-6 py-3 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm">
-            Get in touch
-          </a>
-          <a href="https://www.linkedin.com/in/mohan-marada/" target="_blank" rel="noopener noreferrer"
-            className="px-6 py-3 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm flex items-center gap-2">
-            <LinkedInIcon size={14} /> LinkedIn
-          </a>
+        <a href="mailto:mokarma@uw.edu"
+          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all hover:bg-[#6b5420]"
+          style={{ background: "#4a3510", color: "rgba(255,255,255,0.85)", border: "1px solid rgba(255,255,255,0.18)" }}>
+          Get In Touch
+        </a>
+      </div>
+
+      {/* Scroll cue */}
+      <div className="absolute bottom-8 right-10 text-white/30 text-xs font-mono tracking-widest flex items-center gap-2">
+        scroll
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" />
+        </svg>
+      </div>
+    </section>
+  );
+}
+
+// ─── About Me ─────────────────────────────────────────────────────────────────
+
+function About() {
+  return (
+    <section id="about" className="px-6 py-24 border-t border-[#E7E2D9]">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-5xl sm:text-6xl font-bold text-center mb-14 text-[#CF6B40]"
+          style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+          About Me
+        </h2>
+
+        <div className="space-y-7 text-stone-600 text-lg leading-relaxed">
+          <p>
+            👋 I&apos;m <strong className="text-stone-900">Mohan Marada</strong> — a CS + MBA grad
+            who builds at the intersection of engineering and product.
+          </p>
+          <p>
+            I&apos;ve previously worked at{" "}
+            <a href="https://oracle.com" target="_blank" rel="noopener noreferrer"
+              className="text-stone-900 font-semibold underline underline-offset-2 decoration-stone-300 hover:decoration-[#CF6B40] transition-colors">
+              @Oracle
+            </a>{" "}
+            for 7 years as a Software Architect, and at{" "}
+            <strong className="text-stone-900">@Ansemble AI</strong> in the music space as a
+            Founding Engineer, where we raised $500k+.
+          </p>
+          <p>
+            My skills involve{" "}
+            <span className="text-stone-900 font-semibold">technical architecture</span>,{" "}
+            <span className="text-stone-900 font-semibold">product management</span>, and{" "}
+            <span className="text-stone-900 font-semibold">full-stack development</span>.
+            Looking for opportunities and next roles.
+          </p>
+
+          <div className="pt-4 flex flex-wrap gap-3">
+            <a href="mailto:mokarma@uw.edu"
+              className="px-5 py-2.5 bg-[#CF6B40] hover:bg-[#B85C34] text-white text-sm font-semibold rounded-full transition-colors shadow-sm">
+              Get in touch
+            </a>
+            <a href="/resume/resume.pdf" target="_blank" rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm flex items-center gap-2">
+              View Resume <ExternalLinkIcon />
+            </a>
+            <a href="https://www.linkedin.com/in/mohan-marada/" target="_blank" rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-white hover:bg-stone-50 border border-[#E7E2D9] text-stone-700 text-sm font-medium rounded-full transition-colors shadow-sm flex items-center gap-2">
+              <LinkedInIcon size={14} /> LinkedIn
+            </a>
+          </div>
         </div>
 
-        {/* Stats row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[#E7E2D9] border border-[#E7E2D9] rounded-2xl overflow-hidden max-w-2xl mx-auto shadow-sm">
+        {/* Stats */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[#E7E2D9] border border-[#E7E2D9] rounded-2xl overflow-hidden mt-14 shadow-sm">
           {[
             { value: "7 yrs",  label: "at Oracle"           },
             { value: "$500k+", label: "seed raised"          },
@@ -512,6 +583,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <About />
         <Experience />
         <Projects />
         <Skills />
