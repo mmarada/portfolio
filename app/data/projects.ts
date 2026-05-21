@@ -44,6 +44,21 @@ export const projects: Project[] = [
     accentColor: "#15803d",
   },
   {
+    id: "contexto",
+    title: "ContextO",
+    tagline: "AI SRE Agent",
+    description:
+      "LangGraph + FastMCP agent correlating live app errors with GitHub source, generates regression tests, re-runs when changed files overlap with past failures.",
+    tags: ["LangGraph", "FastMCP", "Python", "SQLite"],
+    category: "ai",
+    github: "https://github.com/mmarada/testServerContextO",
+    demo: "https://contexto-dev.lovable.app",
+    gradient: "from-sky-100 to-blue-100",
+    borderColor: "#0284c7",
+    accentColor: "#0369a1",
+  },
+  // ── Row 2 ────────────────────────────────────────────────────────────────
+  {
     id: "fifa26",
     title: "FIFA 26 Odds",
     tagline: "Match prediction engine",
@@ -57,7 +72,6 @@ export const projects: Project[] = [
     borderColor: "#e11d48",
     accentColor: "#be123c",
   },
-  // ── Row 2 ────────────────────────────────────────────────────────────────
   {
     id: "elective-hub",
     title: "Elective Hub",
@@ -100,7 +114,7 @@ export const projects: Project[] = [
     borderColor: "#64748b",
     accentColor: "#475569",
   },
-  // ── Row 3 — no live demo ─────────────────────────────────────────────────
+  // ── Row 3 ────────────────────────────────────────────────────────────────
   {
     id: "portify",
     title: "Portify",
@@ -110,23 +124,10 @@ export const projects: Project[] = [
     tags: ["Next.js", "Claude API", "Vercel API", "TypeScript"],
     category: "tools",
     github: "https://github.com/mmarada/portfolio-builder",
+    demo: "https://oneclickportfoliobuilder.vercel.app/",
     gradient: "from-emerald-100 to-teal-100",
     borderColor: "#059669",
     accentColor: "#047857",
-  },
-  {
-    id: "contexto",
-    title: "ContextO",
-    tagline: "AI SRE Agent",
-    description:
-      "LangGraph + FastMCP agent correlating live app errors with GitHub source, generates regression tests, re-runs when changed files overlap with past failures.",
-    tags: ["LangGraph", "FastMCP", "Python", "SQLite"],
-    category: "ai",
-    github: "https://github.com/mmarada/testServerContextO",
-    demo: "https://contexto-dev.lovable.app",
-    gradient: "from-sky-100 to-blue-100",
-    borderColor: "#0284c7",
-    accentColor: "#0369a1",
   },
   {
     id: "case-grader",
