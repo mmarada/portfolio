@@ -112,7 +112,9 @@ function About() {
               className="text-stone-900 font-semibold underline underline-offset-2 decoration-stone-300 hover:decoration-[#CF6B40] transition-colors">
               @Oracle
             </a>{" "}
-            for 7 years.
+            for 7 years, and at{" "}
+            <strong className="text-stone-900">@Ansemble AI</strong> in the music space as a
+            Founding Engineer.
           </p>
           <p>
             My skills involve{" "}
