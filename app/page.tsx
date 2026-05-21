@@ -135,7 +135,7 @@ const EXPERIENCE_CARDS = [
     id: "oracle",
     period: "2018 – 2025",
     company: "Oracle",
-    companyUrl: "https://oracle.com",
+    companyUrl: null,
     role: "TPM",
     location: "Hyderabad, India",
     note: "Core Framework, Security & platform teams · 7 years",
