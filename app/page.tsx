@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { projects, type Project } from "./data/projects";
 
 // ─── Nav ──────────────────────────────────────────────────────────────────────
@@ -303,11 +303,30 @@ function Experience() {
 // ─── Project card ─────────────────────────────────────────────────────────────
 
 function LivePreview({ url }: { url: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(0.34);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const obs = new ResizeObserver(([entry]) => {
+      setScale(entry.contentRect.width / 1280);
+    });
+    obs.observe(containerRef.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <div className="relative w-full overflow-hidden bg-stone-50" style={{ height: 240 }}>
+    <div ref={containerRef} className="relative w-full overflow-hidden bg-stone-50" style={{ height: 240 }}>
       <iframe src={url} title="Live preview" scrolling="no"
-        style={{ width: 1280, height: 840, transform: "scale(0.25)", transformOrigin: "top left",
-          pointerEvents: "none", border: "none", display: "block" }}
+        style={{
+          width: 1280,
+          height: Math.ceil(240 / scale),
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+          pointerEvents: "none",
+          border: "none",
+          display: "block",
+        }}
       />
       <div className="absolute inset-0" />
     </div>
