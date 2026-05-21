@@ -69,7 +69,7 @@ function Hero() {
         </h1>
 
         <p className="text-white/65 text-xl sm:text-2xl mb-10 font-light leading-snug">
-          Engineer + Product Builder
+          CS + MBA grad
         </p>
 
         <a href="mailto:mokarma@uw.edu"
@@ -112,9 +112,7 @@ function About() {
               className="text-stone-900 font-semibold underline underline-offset-2 decoration-stone-300 hover:decoration-[#CF6B40] transition-colors">
               @Oracle
             </a>{" "}
-            for 7 years, and at{" "}
-            <strong className="text-stone-900">@Ansemble AI</strong> in the music space as a
-            Founding Engineer.
+            for 7 years.
           </p>
           <p>
             My skills involve{" "}
@@ -138,7 +136,7 @@ const EXPERIENCE_CARDS = [
     period: "2018 – 2025",
     company: "Oracle",
     companyUrl: "https://oracle.com",
-    role: "Engineer",
+    role: "TPM",
     location: "Hyderabad, India",
     note: "Core Framework, Security & platform teams · 7 years",
     logo: "/logos/oracle.svg",
